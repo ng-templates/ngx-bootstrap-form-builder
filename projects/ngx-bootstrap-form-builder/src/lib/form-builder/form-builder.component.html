@@ -1,0 +1,11 @@
+<form [formGroup]="form" #ngForm="ngForm" class="row">
+  <ng-container *ngFor="let question of questions">
+    <ngx-field-switcher
+      [ngClass]="{'d-none': question.hidden}"
+      [question]="question"
+      [form]="form"
+      [class]="question.classes"
+      (change$)="onEvent($event)">
+    </ngx-field-switcher>
+  </ng-container>
+</form>

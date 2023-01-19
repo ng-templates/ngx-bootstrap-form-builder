@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'node_modules/quill/dist/quill.snow.css';
+@import 'node_modules/ngx-ui-switch/ui-switch.component.scss';
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import "node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  opacity: 0;
+  transition: all .2s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+  }
+}

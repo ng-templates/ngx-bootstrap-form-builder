@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxBootstrapFormBuilderComponent } from './bootstrap-form-builder.component';
+import { NgxBootstrapFormBuilderComponent } from './form-builder.component';
 
 describe('NgxBootstrapFormBuilderComponent', () => {
   let component: NgxBootstrapFormBuilderComponent;

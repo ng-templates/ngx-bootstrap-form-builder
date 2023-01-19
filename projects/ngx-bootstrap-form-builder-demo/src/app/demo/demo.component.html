@@ -1,0 +1,13 @@
+<ul class="nav nav-pills">
+  <li class="nav-item" role="button" *ngFor="let item of tabs" [routerLink]="['./' + item.route]">
+    <p class="px-3 py-2 text-primary rounded-0 rounded-top mb-0 text-capitalize"
+      routerLinkActive="bg-primary text-white">{{item.name}}
+    </p>
+  </li>
+</ul>
+
+<div class="border rounded-bottom px-3 py-4">
+  <!--  -->
+    <router-outlet></router-outlet>
+  <!-- </div> -->
+</div>
