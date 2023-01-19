@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgxBootstrapFormBuilderComponent } from './ngx-bootstrap-form-builder.component';
+import { NgxBootstrapFormBuilderComponent } from './bootstrap-form-builder.component';
 
 
 

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgxBootstrapFormBuilderService } from './ngx-bootstrap-form-builder.service';
+import { NgxBootstrapFormBuilderService } from './bootstrap-form-builder.service';
 
 describe('NgxBootstrapFormBuilderService', () => {
   let service: NgxBootstrapFormBuilderService;

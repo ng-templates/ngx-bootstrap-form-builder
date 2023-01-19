@@ -17,8 +17,9 @@ jobs:
           cache: 'npm'
       - name: Install ⚙️
         run: npm ci
+      # - name: Lint 📝
+      #   run: npm run build:ci
       - name: Build 🛠
         run: npm run build:ci
       - name: Test 📋
         run: npm run test:ci
-view rawng-ci.yml hosted with ❤ by GitHub
