@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFieldComponent } from './input-field.component';
+import { SelectFieldComponent } from './select-field.component';
 
-describe('InputFieldComponent', <T>() => {
-  let component: InputFieldComponent<T>;
-  let fixture: ComponentFixture<InputFieldComponent<T>>;
+describe('SelectFieldComponent', () => {
+  let component: SelectFieldComponent;
+  let fixture: ComponentFixture<SelectFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputFieldComponent ]
+      declarations: [ SelectFieldComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InputFieldComponent<T>);
+    fixture = TestBed.createComponent(SelectFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

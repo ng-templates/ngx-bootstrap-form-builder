@@ -1,4 +1,5 @@
 import { ValidatorFn } from '@angular/forms';
+import { FIELD_TYPES } from './field-types';
 import { IFormActionItem, IFormItemEvent } from './form-action';
 
 export interface IFormItem<T> {
@@ -6,17 +7,19 @@ export interface IFormItem<T> {
   value?: T;
   key?: string;
   label?: string;
+  labelClass?: string;
   title?: string;
   required?: boolean;
   readonly?: boolean;
   disabled?: boolean;
   hidden?: boolean;
   order?: number;
-  controlType?: string;
+  controlType?: FIELD_TYPES;
   type?: string;
   validators?: ValidatorFn[];
-  classes?: string;
+  class?: string;
   updateOn?: 'blur' | 'change' | 'submit';
+  size?: 'sm' | 'lg';
   connectedTo?: string[];
   tooltip?: string;
   background?: string;
@@ -28,16 +31,18 @@ export class FormItem<T> {
   value: T | undefined;
   key: string;
   label: string;
+  labelClass: string;
   title?: string;
   required: boolean;
   readonly: boolean;
   validators: ValidatorFn[] = [];
   hidden?: boolean;
   updateOn: 'blur' | 'change' | 'submit' = 'change';
+  size?: 'sm' | 'lg';
   order: number;
-  controlType: string;
+  controlType: FIELD_TYPES;
   type: string;
-  classes: string;
+  class: string;
   disabled!: boolean;
   connectedTo?: string[];
   sort?: string;
@@ -50,6 +55,7 @@ export class FormItem<T> {
     this.value = options.value;
     this.key = options.key || '';
     this.label = options.label || '';
+    this.labelClass = options.labelClass || '';
     this.title = options.title || '';
     this.readonly = !!options.readonly;
     this.required = !!options.required;
@@ -57,10 +63,11 @@ export class FormItem<T> {
     this.disabled = !!options.disabled || false;
     this.validators = options.validators || [];
     this.order = options.order === undefined ? 1 : options.order;
-    this.controlType = options.controlType || '';
+    this.controlType = options.controlType || FIELD_TYPES.input;
     this.type = options.type || '';
     this.tooltip = options.tooltip|| '';
-    this.classes = options.classes || '';
+    this.class = options.class || 'mb-3';
+    this.size = options.size;
     this.updateOn = options.updateOn || 'change';
     this.connectedTo = options.connectedTo;
     this.background = options.background;

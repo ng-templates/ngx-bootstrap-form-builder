@@ -1,1 +1,3 @@
-<p>basic works!</p>
+<ngx-bootstrap-form-builder #form="form" [builder]="builder"></ngx-bootstrap-form-builder>
+
+<button class="btn btn-primary" (click)="log(form.value)">Save form</button>

@@ -1,8 +1,9 @@
+import { FIELD_TYPES } from './field-types';
 
 import { FormInput, IFormInput } from "./form-item";
 
 export class FileField extends FormInput<string> {
-  override controlType = 'file';
+  override controlType = FIELD_TYPES.file;
   progress?: number;
   multiple?: boolean;
 

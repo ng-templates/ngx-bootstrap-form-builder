@@ -1,1 +1,8 @@
-<p>input-field works!</p>
+<input
+  [type]="field.type"
+  class="form-control form-control-{{field.size}}"
+  [id]="field.key"
+  [placeholder]="field.placeholder"
+  [(ngModel)]="value"
+  (keyup)="search$.next($any($event).target.value)"
+  >

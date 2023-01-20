@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFieldComponent } from './input-field.component';
+import { TypeaheadFieldComponent } from './typeahead-field.component';
 
-describe('InputFieldComponent', <T>() => {
-  let component: InputFieldComponent<T>;
-  let fixture: ComponentFixture<InputFieldComponent<T>>;
+describe('TypeaheadFieldComponent', () => {
+  let component: TypeaheadFieldComponent;
+  let fixture: ComponentFixture<TypeaheadFieldComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputFieldComponent ]
+      declarations: [ TypeaheadFieldComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InputFieldComponent<T>);
+    fixture = TestBed.createComponent(TypeaheadFieldComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

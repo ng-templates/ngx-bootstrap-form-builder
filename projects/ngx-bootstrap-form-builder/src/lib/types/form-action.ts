@@ -11,12 +11,12 @@ export interface IFormActionItem<T> {
 
 export interface IFormItemEvent<T> {
   value: T;
-  question?: FormField;
+  field?: FormField;
   caller?: FormField;
   form?: FormGroup;
 }
 
 export interface IFormActionItemEvent {
-  question: FormField;
+  field: FormField;
   form: FormGroup;
 }

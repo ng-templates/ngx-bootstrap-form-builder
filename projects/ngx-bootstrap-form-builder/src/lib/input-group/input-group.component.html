@@ -1,0 +1,25 @@
+<div class="input-group">
+  <span *ngIf="field.prefix as prefix" role="button" class="input-group-text rounded-start {{prefix.class}}" id="basic-addon1"
+    (click)="!prefix.loading && prefix?.event({field, form})">
+    <ng-container *ngIf="!prefix.loading; else spinner">
+      <i *ngIf="prefix.icon" class="bi-{{prefix.icon}}"></i>
+      <span *ngIf="prefix.text" class="ms-2" [innerHTML]="prefix.text"></span>
+    </ng-container>
+  </span>
+
+  <ng-content #name></ng-content>
+
+  <span *ngIf="field.suffix as suffix" role="button" class="input-group-text rounded-end {{suffix.class}}"
+    (click)="!suffix.loading && suffix?.event({field, form})">
+    <ng-container *ngIf="!suffix.loading; else spinner">
+      <i *ngIf="suffix.icon" class="bi-{{suffix.icon}}"></i>
+      <span *ngIf="suffix.text" class="ms-2" [innerHTML]="suffix.text"></span>
+    </ng-container>
+  </span>
+</div>
+
+<ng-template #spinner>
+  <div class="spinner-border spinner-border-sm" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</ng-template>

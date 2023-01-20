@@ -1,24 +1,17 @@
 
+import { FIELD_TYPES } from "./field-types";
 import { FormInput, IFormInput } from "./form-item";
 
 export class InputField extends FormInput<string | number> {
-  override controlType = 'textbox';
-}
-
-export class DebounceInputField extends FormInput<string | number> {
-  override controlType = 'debounce';
-}
-
-export class TextAreaField extends FormInput<string> {
-  override controlType = 'textarea';
-  rows?: number;
+  override controlType = FIELD_TYPES.input;
+  debounceTime?: number;
 
   constructor(
-    options: IFormInput<string> & {
-      rows?: number
+    options: IFormInput<string | number> & {
+      debounceTime?: number;
     }
   ){
     super(options);
-    this.rows = options.rows || 3
+    this.debounceTime = options.debounceTime
   }
 }

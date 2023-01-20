@@ -1,32 +1,31 @@
 import { Component, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SwitchField } from '../../types/checkbox';
+import { SelectField } from '../../types';
+import { IKeyValue } from './../../types/key-value';
 
 @Component({
-  selector: 'ngx-switch-field',
-  templateUrl: './switch-field.component.html',
-  styleUrls: ['./switch-field.component.scss'],
+  selector: 'ngx-select-field',
+  templateUrl: './select-field.component.html',
   styles: [ ':host{ display: block; width: 100%; }'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: SwitchFieldComponent,
+      useExisting: SelectFieldComponent,
       multi: true,
     },
   ]
 })
-export class SwitchFieldComponent implements ControlValueAccessor{
+export class SelectFieldComponent implements ControlValueAccessor {
+  @Input() field!: SelectField;
 
-  @Input() field!: SwitchField;
-
-  set value(val: boolean){
+  set value(val: IKeyValue){
     this.onChange(val)
   }
 
   // CONTROL VALUE ACCESSOR INTERFACE START
   onChange: (value: any) => void = () => {};
   onTouched: () => void = () => {};
-  writeValue(value: boolean) { this.value = value || false; }
+  writeValue(value: any) { this.value = value || null; }
   registerOnChange(fn: any) { this.onChange = fn; }
   registerOnTouched(fn: any) { this.onTouched = fn; }
   setDisabledState(disabled: boolean) { this.field.disabled = disabled; }

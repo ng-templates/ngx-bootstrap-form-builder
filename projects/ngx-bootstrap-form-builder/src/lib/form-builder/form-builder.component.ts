@@ -3,22 +3,25 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { NgxBootstrapFormBuilderService } from '../form-builder.service';
 import { removeUndefinedProps } from '../helpers/utils';
-import { FormField } from '../types';
+import { FormBuilder, FormField } from '../types';
+import { FORM_STYLE } from './../types/form-builder';
 
 @Component({
+  exportAs: 'form',
   selector: 'ngx-bootstrap-form-builder',
   templateUrl: 'form-builder.component.html'
 })
-export class NgxBootstrapFormBuilderComponent implements OnChanges, OnDestroy {
+export class NgxBootstrapFormBuilderComponent<T> implements OnChanges, OnDestroy {
 
   @ViewChild('ngForm') ngForm!: NgForm;
 
-  @Input() questions: FormField[] = [];
+  @Input() builder!: FormBuilder;
   @Output() formSubmit = new EventEmitter();
   @Output() valueChanges = new EventEmitter();
   @Output() statusChanges = new EventEmitter();
 
   form!: FormGroup;
+  style = FORM_STYLE;
 
   private destroy$ = new Subject<void>();
 
@@ -37,10 +40,10 @@ export class NgxBootstrapFormBuilderComponent implements OnChanges, OnDestroy {
   get value() {
     const formData = this.form?.getRawValue();
     if (formData && !this.invalid) {
-      this.questions
+      this.builder.fields
         ?.filter((x) => x.type === 'number')
-        .forEach((numericQuestion) => {
-          formData[numericQuestion.key] = +formData[numericQuestion.key];
+        .forEach((numericField) => {
+          formData[numericField.key] = +formData[numericField.key];
         });
 
       return removeUndefinedProps(formData);
@@ -50,13 +53,13 @@ export class NgxBootstrapFormBuilderComponent implements OnChanges, OnDestroy {
   constructor(private fbs: NgxBootstrapFormBuilderService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['questions']) {
+    if (changes['builder']) {
 
-      const { currentValue, previousValue } = changes['questions'];
+      const { currentValue, previousValue } = changes['builder'];
 
       if (currentValue && currentValue !== previousValue) {
 
-        this.form = this.fbs.toFormGroup(this.questions as FormField[]);
+        this.form = this.fbs.toFormGroup(this.builder.fields as FormField[]);
 
         this.form?.statusChanges
           .pipe(
@@ -77,14 +80,14 @@ export class NgxBootstrapFormBuilderComponent implements OnChanges, OnDestroy {
     this.destroy$.complete();
   }
 
-  onEvent(data: { value: any; question: FormField }) {
-    const { value, question } = data;
-    const dependantQuestions = this.questions?.filter((item) =>
-      question.connectedTo?.includes(item.key) || item.key === question.key
+  onEvent(data: { value: any; field: FormField }) {
+    const { value, field } = data;
+    const dependantFields = this.builder.fields?.filter((item) =>
+      field.connectedTo?.includes(item.key) || item.key === field.key
     );
-    (dependantQuestions || []).forEach((caller) => {
-      if (dependantQuestions && caller.event) {
-        caller.event({value, question, caller, form: this.form});
+    (dependantFields || []).forEach((caller) => {
+      if (dependantFields && caller.event) {
+        caller.event({value, field, caller, form: this.form});
       }
     });
   }

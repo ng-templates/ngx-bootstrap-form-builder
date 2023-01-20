@@ -57,7 +57,7 @@ export const getRandom = (arr: string | any[], n: number) => {
 };
 
 /**
- * https://stackoverflow.com/questions/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
+ * https://stackoverflow.com/fields/14446511/most-efficient-method-to-groupby-on-an-array-of-objects
  */
 export const groupBy = (xs: any[], key: string, type = {}) =>
   xs.reduce((rv, x) => {

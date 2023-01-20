@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InputFieldComponent } from './input-field.component';
+import { InputGroupComponent } from './input-group.component';
 
-describe('InputFieldComponent', <T>() => {
-  let component: InputFieldComponent<T>;
-  let fixture: ComponentFixture<InputFieldComponent<T>>;
+describe('InputGroupComponent', () => {
+  let component: InputGroupComponent;
+  let fixture: ComponentFixture<InputGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InputFieldComponent ]
+      declarations: [ InputGroupComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(InputFieldComponent<T>);
+    fixture = TestBed.createComponent(InputGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

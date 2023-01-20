@@ -1,10 +1,35 @@
-<form [formGroup]="form" #ngForm="ngForm" class="row">
-  <ng-container *ngFor="let question of questions">
+<!-- <ng-container [ngSwitch]="builder.style">
+
+  <ng-container *ngSwitchCase="style.horizontal">
+
+
+  </ng-container>
+
+
+  <ng-container *ngSwitchDefault>
+
+    <form [formGroup]="form" #ngForm="ngForm" class="row {{builder.class}}">
+      <ng-container *ngFor="let field of builder.fields">
+        <ngx-field-switcher
+          [ngClass]="{'d-none': field.hidden}"
+          [field]="field"
+          [form]="form"
+          [class]="field.class"
+          (change$)="onEvent($event)">
+        </ngx-field-switcher>
+      </ng-container>
+    </form>
+
+  </ng-container>
+</ng-container> -->
+
+<form [formGroup]="form" #ngForm="ngForm" class="row {{builder.class}} needs-validation" novalidate>
+  <ng-container *ngFor="let field of builder.fields">
     <ngx-field-switcher
-      [ngClass]="{'d-none': question.hidden}"
-      [question]="question"
+      [ngClass]="{'d-none': field.hidden}"
+      [field]="field"
       [form]="form"
-      [class]="question.classes"
+      [class]="field.class"
       (change$)="onEvent($event)">
     </ngx-field-switcher>
   </ng-container>

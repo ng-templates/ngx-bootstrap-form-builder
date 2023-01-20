@@ -1,0 +1,12 @@
+<input
+	[id]="field.id"
+	type="text"
+  class="form-control form-control-{{field.size}}"
+	[(ngModel)]="value"
+  (ngModelChange)="onChange($event)"
+	[ngbTypeahead]="search"
+	(focus)="focus$.next($any($event).target.value)"
+  [container]="field.container"
+  [placement]="field.placement"
+	#instance="ngbTypeahead"
+/>

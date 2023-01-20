@@ -5,45 +5,45 @@ import { FormField } from './types';
 @Injectable()
 export class NgxBootstrapFormBuilderService {
 
-  toFormGroup(questions: FormField[]) {
+  toFormGroup(fields: FormField[]) {
     const group: {[key: string]: FormControl} = {};
-    questions.forEach((question) => {
-      group[question.key] = this.createFormControl(question);
+    fields.forEach((field) => {
+      group[field.key] = this.createFormControl(field);
     });
     return new FormGroup(group);
   }
 
-  createFormGroup(question: FormField) {
+  createFormGroup(field: FormField) {
     return new FormGroup({
-      [question.key]: this.createFormControl(question),
+      [field.key]: this.createFormControl(field),
     });
   }
 
-  getValue(question: FormField) {
-    switch (question.type) {
+  getValue(field: FormField) {
+    switch (field.type) {
       case 'checkbox':
-        return Boolean(question.value || false);
+        return Boolean(field.value || false);
       case 'number':
-        return Number(question.value || 0);
+        return Number(field.value || 0);
       default:
-        return question.value;
+        return field.value;
     }
   }
 
-  private createFormControl(question: FormField) {
+  private createFormControl(field: FormField) {
 
-    if (question.required) {
-      question.validators.push(Validators.required);
+    if (field.required) {
+      field.validators.push(Validators.required);
     }
 
     return new FormControl(
       {
-        value: this.getValue(question),
-        disabled: question.disabled,
+        value: this.getValue(field),
+        disabled: field.disabled,
       },
       {
-        validators: question.validators,
-        updateOn: question.updateOn,
+        validators: field.validators,
+        updateOn: field.updateOn,
       }
     );
   }
