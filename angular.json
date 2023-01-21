@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-bootstrap-form-builder",
       "sourceRoot": "projects/ngx-bootstrap-form-builder/src",
-      "prefix": "lib",
+      "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -27,10 +27,20 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "karmaConfig": "projects/ngx-bootstrap-form-builder/karma.conf.js",
             "tsConfig": "projects/ngx-bootstrap-form-builder/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-bootstrap-form-builder/**/*.ts",
+              "projects/ngx-bootstrap-form-builder/**/*.html"
             ]
           }
         }
@@ -119,6 +129,7 @@
               "zone.js",
               "zone.js/testing"
             ],
+            "karmaConfig": "projects/ngx-bootstrap-form-builder-demo/karma.conf.js",
             "tsConfig": "projects/ngx-bootstrap-form-builder-demo/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -129,6 +140,15 @@
               "projects/ngx-bootstrap-form-builder-demo/src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-bootstrap-form-builder-demo/**/*.ts",
+              "projects/ngx-bootstrap-form-builder-demo/**/*.html"
+            ]
           }
         }
       }

@@ -1,0 +1,4 @@
+<select class="form-select form-select-{{field.size}}" [(ngModel)]="value" [id]="field.id">
+  <option *ngIf="field.placeholder" selected>{{field.placeholder}}</option>
+  <option *ngFor="let item of field.options" [ngValue]="item.value">{{item.key}}</option>
+</select>

@@ -1,0 +1,28 @@
+<ng-container *ngIf="form" [formGroup]="form">
+
+  <label *ngIf="field.label" [for]="field.key" class="form-label {{field.labelClass}}">
+    <span [innerHTML]="field.label"></span>
+  </label>
+
+  <ngx-input-group [form]="form" [field]="field">
+
+    <ng-container [ngSwitch]="field.controlType">
+
+      <!-- input -->
+      <ngx-input-field *ngSwitchCase="fieldTypes.input" [field]="$any(field)" [formControlName]="field.key"></ngx-input-field>
+
+      <!-- select -->
+      <ngx-select-field *ngSwitchCase="fieldTypes.select" [field]="$any(field)" [formControlName]="field.key"></ngx-select-field>
+
+      <!-- file -->
+      <ngx-file-field *ngSwitchCase="fieldTypes.file" [field]="$any(field)" [formControlName]="field.key"></ngx-file-field>
+
+      <!-- typeahead -->
+      <ngx-typeahead-field *ngSwitchCase="fieldTypes.typeahead" [field]="$any(field)" [formControlName]="field.key"></ngx-typeahead-field>
+
+      <!-- switch -->
+      <!-- <ngx-switch-field *ngSwitchCase="fieldTypes.switch" [field]="$any(field)" [formControlName]="field.key"></ngx-switch-field> -->
+    </ng-container>
+  </ngx-input-group>
+
+</ng-container>
