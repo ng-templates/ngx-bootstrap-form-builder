@@ -1,4 +1,4 @@
-<ng-container [formGroup]="form">
+<ng-container *ngIf="form" [formGroup]="form">
 
   <label *ngIf="field.label" [for]="field.key" class="form-label {{field.labelClass}}">
     <span [innerHTML]="field.label"></span>

@@ -6,7 +6,7 @@ export interface IFormBuilder {
   fields: FormField[];
 }
 
-export class FormBuilder {
+export class NgxFormBuilder {
   class?: string;
   style?: FORM_STYLE;
   fields!: FormField[];

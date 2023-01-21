@@ -23,7 +23,7 @@
   </ng-container>
 </ng-container> -->
 
-<form [formGroup]="form" #ngForm="ngForm" class="row {{builder.class}} needs-validation" novalidate>
+<form *ngIf="form" [formGroup]="form" #ngForm="ngForm" class="row {{builder.class}} needs-validation" novalidate>
   <ng-container *ngFor="let field of builder.fields">
     <ngx-field-switcher
       [ngClass]="{'d-none': field.hidden}"

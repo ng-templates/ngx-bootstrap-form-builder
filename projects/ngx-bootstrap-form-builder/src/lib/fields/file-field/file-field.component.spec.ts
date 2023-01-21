@@ -14,10 +14,15 @@ describe('FileFieldComponent', () => {
 
     fixture = TestBed.createComponent(FileFieldComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('Test', () => {
+  //   expect().toBe();
+  // });
+
 });

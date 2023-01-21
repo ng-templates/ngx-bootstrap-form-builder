@@ -3,7 +3,7 @@ import { FormGroup, NgForm } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { NgxBootstrapFormBuilderService } from '../form-builder.service';
 import { removeUndefinedProps } from '../helpers/utils';
-import { FormBuilder, FormField } from '../types';
+import { FormField, NgxFormBuilder } from '../types';
 import { FORM_STYLE } from './../types/form-builder';
 
 @Component({
@@ -15,7 +15,7 @@ export class NgxBootstrapFormBuilderComponent<T> implements OnChanges, OnDestroy
 
   @ViewChild('ngForm') ngForm!: NgForm;
 
-  @Input() builder!: FormBuilder;
+  @Input() builder!: NgxFormBuilder;
   @Output() formSubmit = new EventEmitter();
   @Output() valueChanges = new EventEmitter();
   @Output() statusChanges = new EventEmitter();
@@ -54,10 +54,10 @@ export class NgxBootstrapFormBuilderComponent<T> implements OnChanges, OnDestroy
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['builder']) {
-
+      console.log('builder')
       const { currentValue, previousValue } = changes['builder'];
 
-      if (currentValue && currentValue !== previousValue) {
+      if (currentValue !== previousValue) {
 
         this.form = this.fbs.toFormGroup(this.builder.fields as FormField[]);
 

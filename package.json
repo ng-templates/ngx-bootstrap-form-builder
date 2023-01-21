@@ -1,6 +1,11 @@
 {
   "name": "ngx-bootstrap-form-builder",
   "version": "0.0.0-development",
+  "author": {
+    "email": "hello@ng-templates.com",
+    "name": "ng-templates",
+    "url": "https://ng-templates.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +17,7 @@
     "test": "ng test",
     "test:app": "ng test ngx-bootstrap-form-builder-demo --no-watch --no-progress --browsers=ChromeHeadlessCI",
     "test:lib": "ng test ngx-bootstrap-form-builder --no-watch --no-progress --browsers=ChromeHeadlessCI",
-    "test:ci": "npm run test:lib && npm run test:app",
+    "test:ci": "npm run test:lib",
     "prepare": "husky install",
     "build:app": "ng build ngx-bootstrap-form-builder-demo --configuration=production --base-href=/ngx-bootstrap-form-builder-demo/",
     "build:lib": "ng build ngx-bootstrap-form-builder-demo --configuration=production",

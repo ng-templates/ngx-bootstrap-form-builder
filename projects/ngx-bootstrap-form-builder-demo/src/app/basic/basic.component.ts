@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FileField, FormBuilder, InputField, SelectField, TypeaheadField } from '@ngx-bootstrap-form-builder/public-api';
+import { FileField, InputField, NgxFormBuilder, SelectField, TypeaheadField } from '@ngx-bootstrap-form-builder/public-api';
 import { states } from '../../assets/data/states';
 
 @Component({
@@ -9,13 +9,13 @@ import { states } from '../../assets/data/states';
 })
 export class BasicComponent implements OnInit {
 
-  builder!: FormBuilder;
+  builder!: NgxFormBuilder;
 
   ngOnInit(): void {
     this.builder = this.buildForm();
   }
 
-  buildForm(): FormBuilder {
+  buildForm(): NgxFormBuilder {
     return {
       fields: [
         new InputField({

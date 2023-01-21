@@ -6,7 +6,7 @@ export class CheckboxField extends FormInput<boolean> {
   slot?: 'start' | 'end';
   constructor(
     options: IFormInput<boolean> & {
-      slot: 'start' | 'end';
+      slot?: 'start' | 'end';
     }
   ) {
     super(options);
@@ -23,7 +23,7 @@ export class SwitchField extends FormInput<boolean> {
 
   constructor(
     options: IFormInput<boolean> & {
-      slot: 'start' | 'end';
+      slot?: 'start' | 'end';
       labelDefault?: string;
       labelChecked?: string;
     }
